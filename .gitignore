@@ -7,3 +7,5 @@ secrets.tfvars
 vm-migration.rdp
 database-backup/
 AdventureWorks2022.bak
+notes.txt
+vm-dev-env.rdp

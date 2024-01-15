@@ -16,10 +16,10 @@ This project is a demonstration of architecting and implementing a cloud-based d
 - [Project Overview](#project-overview)
 - [Setting Up the Production Environment](#setting-up-the-production-environment)
 - [Database Migration to Azure SQL Database](#database-migration-to-azure-sql-database)
-- [Securing Data and Setting Up Development Environment](#securing-data-and-setting-up-development-environment)
-  - [Creating a Backup File of an On-Premise Database](#creating-a-backup-file-of-an-on-premise-database)
+- [Securing Data and Development Environment Setup](#securing-data-and-development-environment-setup)
+  - [Creating a Secure Backup of the On-Premise Database](#creating-a-secure-backup-of-the-on-premise-database)
   - [Uploading the On-Premise Backup File to Azure Blob Storage](#uploading-the-on-premise-backup-file-to-azure-blob-storage)
-  - [Development Environment Setup](#development-environment-setup)
+  - [Setting Up the Development Environment](#setting-up-the-development-environment)
   - [Automating Backups in Development Environment](#automating-backups-in-development-environment)
 - [Disaster Recovery Simulation and Data Restoration](#disaster-recovery-simulation-and-data-restoration)
   - [Simulating Data Loss in Production Database](#simulating-data-loss-in-production-database)
@@ -226,13 +226,11 @@ Azure Data Studio is a cutting-edge cross-platform solution developed by Microso
 
 #### Streamlining Database Management
 
-- **Introduction to Azure Data Studio:**
-  - **Downloading and Installation:** Get the installation package from the official [website](https://learn.microsoft.com/en-us/azure-data-studio/download-azure-data-studio?tabs=win-install%2Cwin-user-install%2Credhat-install%2Cwindows-uninstall%2Credhat-uninstall).
+- **Introduction to Azure Data Studio:** Get the installation package from the official [website](https://learn.microsoft.com/en-us/azure-data-studio/download-azure-data-studio?tabs=win-install%2Cwin-user-install%2Credhat-install%2Cwindows-uninstall%2Credhat-uninstall) and install it on the VM.
       
 ![Opening Azure Data Studio](/images/migrate-to-sql-database/azure-data-studio-config/open-azure-data-studio.PNG)
 
-- **Establishing Connections:**
-  - **Local SQL Server Connection:** Set up a connection to your local SQL Server ( `localhost`) in Azure Data Studio for direct database management.
+- **Establishing Local SQL Server Connections:** Set up a connection to your local SQL Server ( `localhost`) in Azure Data Studio for direct database management.
       
 ![Creating Connection in Azure Data Studio](/images/migrate-to-sql-database/azure-data-studio-config/azure-studio-connection-create.PNG)
 
@@ -242,8 +240,7 @@ Azure Data Studio is a cutting-edge cross-platform solution developed by Microso
       
 ![Enabling Connection to Database](/images/migrate-to-sql-database/azure-data-studio-config/enable-connection-to-database.PNG)
 
-  - **Successful Connection Verification:**
-    - Verify successful connection to your local SQL Server, confirming that the setup is correctly configured.
+  - **Successful Connection Verification:** Verify successful connection to your local SQL Server, confirming that the setup is correctly configured.
       
 ![Successful Connection to Database](/images/migrate-to-sql-database/azure-data-studio-config/azure-studio-connection-successful.PNG)
 

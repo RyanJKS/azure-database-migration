@@ -72,13 +72,14 @@ The architecture diagram provides a visual representation of the setup, migratio
 
 ### Prerequisites
 - Make sure you have an Azure account with a valid subscription.
-> :bulb: **Quick Start with Terraform**: If you want to start quickly without setting everything up manually, this repo provides a Terraform script to do the work for you. Just be sure to have these details ready before you begin:
-> - :key: Service Principal Client ID and Secret Key
-> - :id: Subscription ID and Tenant ID
-> - :bust_in_silhouette: Username and password for the VM
-> - :globe_with_meridians: Your Public IP address
+> :bulb: **Quick Start with Terraform**: For rapid deployment in your Azure environment, this repository provides a Terraform script to automate the setup. Ensure you have the following information before you begin:
+> - :key: **Service Principal Details**: Obtain the Client ID and Secret Key of your Azure Service Principal. These are used for authenticating with Azure and should be entered in the `variables.tf` file under `client_id` and `client_secret`.
+> - :id: **Azure Subscription and Tenant IDs**: Your Azure Subscription ID and Tenant ID are crucial for Terraform to know where to create the resources. These go into `subscription_id` and `tenant_id` in the `variables.tf` file.
+> - :bust_in_silhouette: **VM Credentials**: Choose an admin username and password for your VM. Remember, the password must comply with Azure's complexity requirements: at least one lowercase character, one uppercase character, one number, and one special character, with a length between 12 and 123 characters. Input these in `admin_username` and `admin_password`.
+> - :globe_with_meridians: **Your Public IP Address**: This is required to set up network access rules for your VM. It should be added to `my_public_ip` in the `variables.tf` file.
 >
-> With these items, you can swiftly provision your Azure resources with Terraform, streamlining your initial setup process.
+> With these details in hand, proceed to the 'Usage Instructions' section. Here, you'll find steps to configure the `variables.tf` file with these values and then apply the Terraform script. This script will set up two Azure Virtual Machines with SQL Server and SQL Server Management Studio installed, an Azure SQL Server, a SQL Database in that Server, a Storage Account and related networking components, all aligned with the specifications you provide.
+
 
 
 ## Setting Up the Production Environment

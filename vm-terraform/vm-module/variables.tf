@@ -13,11 +13,6 @@ variable "location" {
   type        = string
 }
 
-variable "network_interface_id" {
-  description = "ID for network interface from networking module"
-  type        = string
-}
-
 variable "admin_username" {
   description = "Admin username for VM"
   type        = string
@@ -25,5 +20,16 @@ variable "admin_username" {
 
 variable "admin_password" {
   description = "Password for VM"
+  type        = string
+}
+
+variable "subnet_id" {
+  description = "The ID of the subnet where the VM will be connected"
+  type        = string
+}
+
+# Variable for the Network Security Group (NSG) ID
+variable "nsg_id" {
+  description = "The ID of the Network Security Group associated with the VM"
   type        = string
 }

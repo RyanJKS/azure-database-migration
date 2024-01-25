@@ -8,7 +8,14 @@ output "network_location" {
   value       = azurerm_resource_group.db_migration_rg.location
 }
 
-output "network_interface_id" {
-  description = "Network Interface ID"
-  value       = azurerm_network_interface.vm_network_interface.id
+# Output for the Subnet ID
+output "subnet_id" {
+  description = "The ID of the subnet in the virtual network"
+  value       = azurerm_subnet.vm_network_subnet.id
+}
+
+# Output for the Network Security Group ID
+output "nsg_id" {
+  description = "The ID of the Network Security Group"
+  value       = azurerm_network_security_group.vm_nsg.id
 }

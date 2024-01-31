@@ -84,6 +84,9 @@ The architecture diagram provides a visual representation of the setup, migratio
 
 ## Setting Up the Production Environment
 To establish the foundation for our project infrastructure, begin by creating a resource group in Azure. This resource group will act as a central hub, housing all the essential components of our project, including virtual machines and other related resources.
+<details>
+  <summary>Open Logbook</summary>
+
 <div align="center">
   <img src="/images/setup-vm/vm-config/create-resource-group.png "alt="Create Resource Group">
 </div>
@@ -157,7 +160,7 @@ The installation of **SQL Server** and **SQL Server Management Studio (SSMS)** o
 > Keep a note of whatever method used to access the SQL Server as it will later be used to create a connection to this server.
 
 ### AdventureWorks Database Restoration
-To simulate a real-world production database, the **AdventureWorks** sample database is restored. This process exemplifies recovery scenarios and provides a rich dataset for testing.
+To simulate a real-world production database, the **AdventureWorks** sample database is restored. This process exemplifies recovery scenarios and provides a rich dataset for testing. This database can be found [here](https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms#download-backup-files).
 
 - **Start Restoration:**: Right click on 'Database' and select 'Restore Database..' to start the process.
 
@@ -184,11 +187,15 @@ To simulate a real-world production database, the **AdventureWorks** sample data
 </div>
 
 With these steps, the production environment mirrors the on-premise server's functionality, providing a solid foundation for migrating to Azure SQL Database. 
+</details>
 
 ## Database Migration to Azure SQL Database
 
 ### Overview
 Migration of the database to Azure SQL Database is a key component of this project. This process includes data backup, restoration, and automated scheduling for ongoing data management.
+
+<details>
+  <summary>Open Logbook</summary>
 
 ### Creating an Azure SQL Server
 #### Initial Setup
@@ -361,12 +368,15 @@ This process ensures that all data from the local server is accurately migrated 
 ![Validating Data Migration](/images/migrate-to-sql-database/data-migration/migration-complete.PNG)
 
 With both schema and data successfully migrated to Azure SQL Database, we're now well-positioned to leverage the full capabilities of Azure for database management and operations.
-
+</details>
 
 ## Securing Data and Development Environment Setup
 
 ### Introduction
 This section outlines the process of securing your production database data and setting up a separate development environment for testing and experimentation, without impacting your live data. Companies often have two types of databases: one for storing real customer data (production database) and another for testing and experimenting (development database). By provisioning a development database, we will be able to test and experiment without worrying about affecting your main production data. This separation is crucial for making changes and improvements while maintaining the integrity of your live data. 
+
+<details>
+  <summary>Open Logbook</summary>
 
 We will first ensure that the data stored in the production database is securely stored on Azure, before creating a development environment for the database. 
 
@@ -507,13 +517,19 @@ Using **SQL Server Management Studio (SSMS)** and its capabilities for managing 
 
 By completing these steps, the production data is securely backed up and stored both locally and on Azure Blob Storage. Moreover, the establishment of a robust development environment with automated backups ensures that experimentation and testing can proceed without risk to the database.
 
-### Disaster Recovery Simulation and Data Restoration
+</details>
+
+## Disaster Recovery Simulation and Data Restoration
 Disaster recovery is a critical aspect of any organization's data strategy. It refers to the set of processes and tools implemented to safeguard data, applications, and systems, enabling rapid recovery and continuity of operations in the face of disruptive events. By having a robust disaster recovery plan, businesses can minimize downtime, ensure data integrity, and maintain their ability to serve customers without significant interruptions.
 
-#### Preparing for the Unexpected
+<details>
+  <summary>Open Logbook</summary>
+
+
+### Preparing for the Unexpected
 - **Importance:** Testing and ensuring the robustness of your disaster recovery strategy is crucial in handling real-world incidents.
 
-#### Simulating Data Loss in Production Database
+### Simulating Data Loss in Production Database
 - **Objective:** Prepare for potential data loss scenarios by simulating data removal.
   - Remove specific data from the production database and confirm the data loss.
   - Use the following SQL query to delete some data:
@@ -523,7 +539,7 @@ Disaster recovery is a critical aspect of any organization's data strategy. It r
     ```
 ![Confirming Data Loss](/images/disaster-recovery/simulate-data-loss/data-loss-p2.PNG)
 
-#### Restoring the Production Database
+### Restoring the Production Database
 - **Goal:** Restore the production database to a state before the simulated data loss. Use Azure SQL Database's backup capabilities for restoration.
 
 ![Database Restoration](/images/disaster-recovery/recover-data/data-restore-p1.PNG)
@@ -554,12 +570,17 @@ Disaster recovery is a critical aspect of any organization's data strategy. It r
 
 By completing these steps, we have effectively simulated a data loss scenario and successfully restore the production database.
 
-### Geo-replication and Failover Configuration
+</details>
+
+## Geo-replication and Failover Configuration
 To maintain data availability even in adverse conditions, geo-replication and failover systems are configured. This ensures that the database remains accessible and operational across different geographical locations.
 
 Geo-Replication is a disaster recovery feature in Azure SQL Database that provides data redundancy and high availability by asynchronously replicating your primary database to a secondary region. This secondary region is often in a different geographic location, ensuring data durability in case of a regional outage or disaster.
 
-#### Setting Up Geo-replication
+<details>
+  <summary>Open Logbook</summary>
+
+### Setting Up Geo-replication
 
 - **Geographical Separation**: Start by creating a secondary server is in a different geographical region to increase redundancy and minimize shared risks.
 
@@ -613,11 +634,15 @@ We will orchestrate a planned failover in order to test the resilience of the sy
 
 By following these steps, you ensure the high availability and resilience of your Azure SQL Database across different geographical conditions and operational scenarios.
 
+</details>
+
 ## Security and Access Control
 Security is a paramount concern in cloud-based systems. **Microsoft Entra ID** integration is utilized to manage access roles and provide an additional layer of security, control, and protection over the database system.
 
 This section details the integration of **Microsoft Entra ID** authentication to strengthen database security. By enabling Microsoft Entra ID as a trusted identity provider for the SQL Server hosting the Azure SQL production database, we can manage access roles, providing an added security layer over the Azure SQL Database system.
 
+<details>
+  <summary>Open Logbook</summary>
 
 ### Admin Setup and Role Assignment
 - **Admin Assignment Process:** Establishing effective user management and access control by assigning a Microsoft Entra admin. Navigate to the Azure portal and access the SQL Server used to store the production database. 
@@ -677,9 +702,14 @@ This section details the integration of **Microsoft Entra ID** authentication to
 
 An error is shown which indicates that the user doesn't have access to modify the data, but read-only access as expected.
 
+</details>
+
 ## Debugging Authentication and Connectivity Issues
 
 When implementing Microsoft Entra ID authentication with Azure SQL Database, various issues related to authentication and connectivity may arise. This section provides guidance on how to troubleshoot and resolve common problems effectively.
+
+<details>
+  <summary>Open Logbook</summary>
 
 ### Debugging Common Authentication Issues
 
@@ -706,6 +736,8 @@ When implementing Microsoft Entra ID authentication with Azure SQL Database, var
 By following these steps, you can effectively address common authentication and connectivity problems, ensuring a smooth and secure integration with Microsoft Entra ID and Azure SQL Database.
 
 After implementing Microsoft Entra ID integration and setting up appropriate user roles, we have established a more secure and controlled environment. This structure not only enhances security but also ensures that each user has the appropriate level of access to the Azure SQL Database.
+
+</details>
 
 ## Conclusion
 
